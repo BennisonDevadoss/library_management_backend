@@ -54,4 +54,8 @@ async function signin(signinAttrs: LoginBodyParams) {
   }
 }
 
-export { signin };
+async function signout(user) {
+  return user.update({ access_token: null });
+}
+
+export { signin, signout };
