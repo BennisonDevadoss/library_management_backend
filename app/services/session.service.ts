@@ -55,11 +55,7 @@ async function signin(signinAttrs: LoginBodyParams) {
 }
 
 async function signout(user) {
-  try {
-    return user.update({ access_token: null });
-  } catch (error) {
-    throw error;
-  }
+  return user.update({ access_token: null });
 }
 
 export { signin, signout };
