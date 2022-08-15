@@ -1,3 +1,3 @@
 import sessionPublicRoutes from './sessions.public.routes';
-
-export { sessionPublicRoutes };
+import sessionPrivateRoutes from './sessions.private.routes';
+export { sessionPublicRoutes, sessionPrivateRoutes };

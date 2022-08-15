@@ -54,4 +54,12 @@ async function signin(signinAttrs: LoginBodyParams) {
   }
 }
 
-export { signin };
+async function signout(user) {
+  try {
+    return user.update({ access_token: null });
+  } catch (error) {
+    throw error;
+  }
+}
+
+export { signin, signout };
