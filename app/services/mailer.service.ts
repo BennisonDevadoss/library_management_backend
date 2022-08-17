@@ -9,7 +9,7 @@ const options = {
 
 const mailer = nodemailer.createTransport(options);
 
-function sendInvitation(user: UserInstance) {
+function sendInvitation(user: UserInstance): void {
   const mailOptions = {
     from: process.env.FROM_EMAIL,
     to: user.email,
