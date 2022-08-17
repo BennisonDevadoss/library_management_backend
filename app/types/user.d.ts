@@ -1,4 +1,4 @@
-import { Model, BuildOptions } from 'sequelize';
+import { Model, BuildOptions, HasOneGetAssociationMixin } from 'sequelize';
 import { RoleInstance } from './role';
 
 export interface UserAttributes {
@@ -25,7 +25,8 @@ export type UserCreateAttributes = Pick<UserAttributes, 'email' | 'name'>;
 export interface UserInstance
   extends Model<UserAttributes, UserCreateAttributes>,
     UserAttributes {
-  getRole(): RoleInstance;
+  role?: RoleInstance;
+  getRoles: () => any;
 }
 
 export type UserStatic = typeof Model & {

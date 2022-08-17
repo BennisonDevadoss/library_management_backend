@@ -4,8 +4,9 @@ export const modelOptions = {
   paranoid: true,
   underscored: true,
   tableName: 'roles',
-  createdAt: 'created-at',
-  updatedAt: 'updated_at'
+  createdAt: 'created_at',
+  updatedAt: 'updated_at',
+  deletedAt: 'deleted_at'
 };
 
 export const attributes = {

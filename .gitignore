@@ -115,3 +115,6 @@ dist
 
 # Github personal token file
 githubtoken
+
+# Sample Coding for understanding the SEQUELIZE
+sequelize_association_checking.mjs

@@ -1,5 +1,4 @@
-import User from '../models/user/user.model';
-
+import { User } from '../models';
 import { verify } from 'jsonwebtoken';
 import { UserInstance } from '../types';
 
@@ -23,6 +22,10 @@ declare module 'fastify' {
     currentUser: UserInstance;
   }
 }
+
+/* interface FastifyRequest {
+     currentUser: UserInstance;
+   } */
 
 function userAuthenticate(fastify: FastifyInstance) {
   fastify.decorateRequest('currentUser', null);

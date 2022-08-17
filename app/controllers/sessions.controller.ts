@@ -1,5 +1,6 @@
-import { signin, signout } from '../services/session.service';
 import { LoginBodyParams } from '../types/sessions.controller';
+
+import { signin, signout } from '../services/session.service';
 import { FastifyReply, FastifyRequest } from 'fastify';
 
 function login(req: FastifyRequest, reply: FastifyReply) {
@@ -19,7 +20,7 @@ function logout(req: FastifyRequest, reply: FastifyReply) {
   signout(req.currentUser)
     .then(() => {
       reply.header('Authorization', null);
-      reply.code(200).send({ message: 'Successfully logged out' });
+      reply.code(200).send({ message: ['Successfully logged out'] });
     })
     .catch((error) => {
       reply.send(error);

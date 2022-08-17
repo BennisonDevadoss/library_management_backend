@@ -1,6 +1,7 @@
+import { add } from '../services/user.service';
 import { UserInstance } from '../types';
 import { AddUserParams } from '../types/users.controller';
-import { add } from '../services/user.service';
+
 import { FastifyReply, FastifyRequest } from 'fastify';
 
 function createUser(req: FastifyRequest, reply: FastifyReply) {

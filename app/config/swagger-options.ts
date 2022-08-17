@@ -7,6 +7,14 @@ const tagOptions = [
   {
     name: 'sessions',
     description: 'routes related to sessions'
+  },
+  {
+    name: 'admin',
+    description: 'routes related to admin'
+  },
+  {
+    name: 'agent',
+    description: 'routes related to agent'
   }
 ];
 
@@ -26,9 +34,9 @@ const swaggerOptions: SwaggerOptions = {
     info: {
       title: 'LIBRARY MANAGEMENT API',
       description:
-    /*eslint-disable */
+        /*eslint-disable */
         'Building a blazing fast REST API with Node.js, Postgresql, Fastify and Swagger',
-    /*eslint-disable */ 
+      /*eslint-disable */
       version: '1.0.0'
     }
   }

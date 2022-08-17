@@ -1,3 +1,5 @@
+import logoutRouterOpts from './sessions-logout.router-option';
+
 import { logout } from '../../controllers/sessions.controller';
 import { FastifyInstance } from 'fastify';
 
@@ -11,6 +13,7 @@ function sessionPrivateRoutes(
   fastify.route({
     method: 'PUT',
     url: '/v1/logout',
+    schema: logoutRouterOpts,
     handler: logout
   });
   next();

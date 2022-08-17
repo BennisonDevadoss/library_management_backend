@@ -1,7 +1,11 @@
 import User from './user.model';
 import Role from '../role/user.model';
 
-User.hasOne(Role, {
-  foreignKey: 'role_id',
-  as: 'role'
-});
+function defineScopeAndAssociation() {
+  User.belongsTo(Role, {
+    foreignKey: 'role_id',
+    as: 'roles'
+  });
+}
+
+export default defineScopeAndAssociation;

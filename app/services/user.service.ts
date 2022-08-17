@@ -1,4 +1,4 @@
-import User from '../models/user/user.model';
+import { User } from '../models';
 
 import { UserInstance } from '../types';
 import { AddUserParams } from '../types/users.controller';
@@ -9,12 +9,12 @@ async function add(attrs: AddUserParams, currentUser: UserInstance) {
   const userCreateAttrs = {
     ...attrs,
     password: defaultPassword,
-    created_by: 1,
+    created_by: currentUser.id,
     password_confirmation: defaultPassword
   };
   const user = await User.create(userCreateAttrs);
   // sendInvitation(user);
-  const userRole = await user.getRole();
+  const userRole = await user.getRoles();
   const userData = {
     ...user,
     role: userRole.role
