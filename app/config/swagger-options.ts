@@ -15,6 +15,10 @@ const tagOptions = [
   {
     name: 'agent',
     description: 'routes related to agent'
+  },
+  {
+    name: 'users',
+    description: 'routes related to users'
   }
 ];
 
