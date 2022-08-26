@@ -1,8 +1,8 @@
-import { add } from '../services/user.service';
+import { add, list } from '../services/user.service';
 import { UserInstance } from '../types';
-import { AddUserParams } from '../types/users.controller';
+import { AddUserParams, UserListQueryParams } from '../types/users.controller';
 
-import { FastifyReply, FastifyRequest } from 'fastify';
+import { FastifyError, FastifyReply, FastifyRequest } from 'fastify';
 
 function createUser(req: FastifyRequest, reply: FastifyReply) {
   const currentUser = req.currentUser as UserInstance;
@@ -16,4 +16,15 @@ function createUser(req: FastifyRequest, reply: FastifyReply) {
     });
 }
 
-export { createUser };
+function listUser(req: FastifyRequest, reply: FastifyReply) {
+  const query = req.query as UserListQueryParams;
+  list(query)
+    .then((users) => {
+      reply.code(200).send(users);
+    })
+    .catch((error: FastifyError) => {
+      reply.send(error);
+    });
+}
+
+export { createUser, listUser };
