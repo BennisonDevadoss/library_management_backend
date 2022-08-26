@@ -6,7 +6,6 @@ import { UserInstance } from '../types';
 import { sign as jwtSign } from 'jsonwebtoken';
 import { LoginBodyParams } from '../types/sessions.controller';
 import { EmptyResultError } from 'sequelize';
-import { RoleInstance } from 'app/types/role';
 
 async function validatePassword(
   currentUser: UserInstance,
@@ -38,7 +37,7 @@ async function markSignIn(
   };
   const updatedUser = await user.update(userUpdateAttributes);
   const userRole = await updatedUser.getRoles();
-  updatedUser.role = userRole.role;
+  updatedUser.roles = userRole.role;
   return updatedUser;
 }
 

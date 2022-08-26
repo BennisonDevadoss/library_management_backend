@@ -1,7 +1,7 @@
 import pino from 'pino';
 import moment from 'moment';
 
-const logLevel = process.env.LOG_LEVEL || 'info';
+const logLevel = process.env.LOG_LEVEL || 'debug';
 
 const logConfig = {
   name: 'LIBRARY MANAGEMENT API SERVER',
