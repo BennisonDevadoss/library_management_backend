@@ -1,7 +1,7 @@
-import { add, list } from '../services/user.service';
 import { UserInstance } from '../types';
 import { AddUserParams, UserListQueryParams } from '../types/users.controller';
 
+import { add, list, destroy } from '../services/user.service';
 import { FastifyError, FastifyReply, FastifyRequest } from 'fastify';
 
 function createUser(req: FastifyRequest, reply: FastifyReply) {
@@ -27,4 +27,16 @@ function listUser(req: FastifyRequest, reply: FastifyReply) {
     });
 }
 
-export { createUser, listUser };
+function deleteUser(req: FastifyRequest, reply: FastifyReply) {
+  const currentUser: UserInstance = req.currentUser
+  const { id } = req.params as { id: number };
+  destroy(id, currentUser)
+    .then(() => {
+      reply.code(200).send({ message: ['user deleted successfully'] });
+    })
+    .catch((error: FastifyError) => {
+      reply.send(error);
+    });
+}
+
+export { createUser, listUser, deleteUser };

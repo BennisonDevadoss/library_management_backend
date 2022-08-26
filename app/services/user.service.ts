@@ -3,12 +3,21 @@ import columnSearchQuery from '../queries/user/user-column-search.query';
 
 import { UserInstance } from '../types';
 import { Q_MINIMUM_SIZE } from '../config/constants';
+import { EmptyResultError } from 'sequelize';
 import { generateRandomPassword } from '../lib/generate-password';
 
 import { map, size } from 'lodash';
 import { Role, User } from '../models';
 import { paginate, paginatorResult } from '../lib/paginator-result';
 import { AddUserParams, UserListQueryParams } from '../types/users.controller';
+
+async function getUserByid(id: number) {
+  const user = await User.findByPk(id);
+  if (!user) {
+    throw new EmptyResultError('user not found');
+  }
+  return user;
+}
 
 async function add(attrs: AddUserParams, currentUser: UserInstance) {
   const defaultPassword = generateRandomPassword();
@@ -62,4 +71,11 @@ async function list(query: UserListQueryParams) {
   return paginate(result, listOfUsers, 'users');
 }
 
-export { add, list };
+async function destroy(id: number, currentUser: UserInstance) {
+  if (id === Number(currentUser.id))
+    throw new Error('Oops! You are trying to delete you');
+  const user = await getUserByid(id);
+  return user.destroy();
+}
+
+export { add, list, destroy };
