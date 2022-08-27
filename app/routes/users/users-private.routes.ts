@@ -1,6 +1,7 @@
 import userListRouterOpts from './users-list.router-option';
 import userCreateRoutesOpts from './users-add.router-option';
 import userDeleteRouterOpts from './user-delete.router-option';
+import userDetailRouterOpts from './users-detail.router-option';
 
 import { FastifyInstance } from 'fastify';
 
@@ -9,7 +10,8 @@ import { IncomingMessage, Server, ServerResponse } from 'http';
 import {
   listUser,
   deleteUser,
-  createUser
+  createUser,
+  detailUser
 } from '../../controllers/users.controller';
 
 function usersPrivateRoutes(
@@ -34,6 +36,12 @@ function usersPrivateRoutes(
     url: '/v1/users/:id',
     schema: userDeleteRouterOpts,
     handler: deleteUser
+  });
+  fastify.route({
+    method: 'GET',
+    url: '/v1/users/:id',
+    schema: userDetailRouterOpts,
+    handler: detailUser
   });
   next();
 }
