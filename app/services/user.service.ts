@@ -78,4 +78,25 @@ async function destroy(id: number, currentUser: UserInstance) {
   return user.destroy();
 }
 
-export { add, list, destroy };
+async function detail(id: number) {
+  const user = await User.findOne({
+    where: { id: id },
+    include: [
+      {
+        model: Role,
+        as: 'roles'
+      }
+    ]
+  });
+  if (!user) throw new EmptyResultError('user not found');
+  const userData = {
+    id: user.id,
+    name: user.name,
+    email: user.email,
+    role: user.roles?.role,
+    mobileNo: user.mobile_no
+  };
+  return userData;
+}
+
+export { add, list, detail, destroy };
