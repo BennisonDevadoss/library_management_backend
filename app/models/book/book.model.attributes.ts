@@ -17,7 +17,7 @@ export const attributes = {
     validate: {
       isNull: {
         args: true,
-        msg: `name can't be empty`
+        msg: 'name can\'t be empty'
       }
     }
   },
@@ -27,7 +27,7 @@ export const attributes = {
     validate: {
       isNull: {
         args: true,
-        msg: `author can't be empty`
+        msg: 'author can\'t be empty'
       }
     }
   },
@@ -41,7 +41,7 @@ export const attributes = {
     validate: {
       isNull: {
         args: true,
-        msg: `rating can't be empty`
+        msg: 'rating can\'t be empty'
       }
     }
   },
@@ -51,7 +51,7 @@ export const attributes = {
     validate: {
       isNull: {
         args: true,
-        msg: `price can't be empty`
+        msg: 'price can\'t be empty'
       }
     }
   },
@@ -65,7 +65,7 @@ export const attributes = {
     validatae: {
       isNull: {
         args: true,
-        msg: `created_by can't be empty`
+        msg: 'created_by can\'t be empty'
       }
     }
   },
@@ -83,7 +83,7 @@ export const attributes = {
     validate: {
       isNull: {
         args: true,
-        msg: `created_at can't be empty`
+        msg: 'created_at can\'t be empty'
       }
     }
   },
@@ -93,7 +93,7 @@ export const attributes = {
     validate: {
       isNull: {
         args: true,
-        msg: `updated_at can't be empty`
+        msg: 'updated_at can\'t be empty'
       }
     }
   },
