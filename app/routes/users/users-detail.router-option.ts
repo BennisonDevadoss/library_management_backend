@@ -1,5 +1,7 @@
 import { headers, adminSecureErrors } from '../shared-schema';
 const userDetailRouterOpts = {
+  tags: ['admin', 'users'],
+  description: 'user detail',
   headers,
   params: {
     type: 'object',

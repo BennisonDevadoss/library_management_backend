@@ -2,7 +2,7 @@ import { headers, adminSecureErrors, pagination } from '../shared-schema';
 
 const userListRouterOpts = {
   description: 'list users',
-  tags: ['admin', 'agent'],
+  tags: ['admin', 'agent', 'users'],
   headers,
   querystring: {
     type: 'object',

@@ -1,6 +1,7 @@
 import { headers, adminSecureErrors } from '../shared-schema';
 
 const logoutRouterOpts = {
+  tags: ['admin', 'agent', 'sessions'],
   description: 'delete user session',
   headers,
   response: {
