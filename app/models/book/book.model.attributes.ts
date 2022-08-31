@@ -15,9 +15,9 @@ export const attributes = {
     type: DataTypes.STRING(100),
     allowNull: false,
     validate: {
-      isNull: {
+      notNull: {
         args: true,
-        msg: 'name can\'t be empty'
+        msg: "name can't be empty"
       }
     }
   },
@@ -25,23 +25,23 @@ export const attributes = {
     type: DataTypes.STRING(100),
     allowNull: false,
     validate: {
-      isNull: {
+      notNull: {
         args: true,
-        msg: 'author can\'t be empty'
+        msg: "author can't be empty"
       }
     }
   },
   description: {
     type: DataTypes.STRING(100),
-    allowNull: false
+    allowNull: true
   },
   rating: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.REAL,
     allowNull: false,
     validate: {
-      isNull: {
+      notNull: {
         args: true,
-        msg: 'rating can\'t be empty'
+        msg: "rating can't be empty"
       }
     }
   },
@@ -49,9 +49,9 @@ export const attributes = {
     type: DataTypes.INTEGER,
     allowNull: false,
     validate: {
-      isNull: {
+      notNull: {
         args: true,
-        msg: 'price can\'t be empty'
+        msg: "price can't be empty"
       }
     }
   },
@@ -63,9 +63,9 @@ export const attributes = {
       key: 'id'
     },
     validatae: {
-      isNull: {
+      notNull: {
         args: true,
-        msg: 'created_by can\'t be empty'
+        msg: "created_by can't be empty"
       }
     }
   },
@@ -81,9 +81,9 @@ export const attributes = {
     type: DataTypes.DATE,
     allowNull: false,
     validate: {
-      isNull: {
+      notNull: {
         args: true,
-        msg: 'created_at can\'t be empty'
+        msg: "created_at can't be empty"
       }
     }
   },
@@ -91,9 +91,9 @@ export const attributes = {
     type: DataTypes.DATE,
     allowNull: false,
     validate: {
-      isNull: {
+      notNull: {
         args: true,
-        msg: 'updated_at can\'t be empty'
+        msg: "updated_at can't be empty"
       }
     }
   },

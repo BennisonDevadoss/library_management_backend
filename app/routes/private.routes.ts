@@ -5,6 +5,7 @@ import { usersPrivateRoutes } from './users';
 import { sessionPrivateRoutes } from './sessions';
 
 import { IncomingMessage, Server, ServerResponse } from 'http';
+import { booksPrivateRoutes } from './books';
 
 function privateRoutes(
   fastify: FastifyInstance<Server, IncomingMessage, ServerResponse>,
@@ -13,6 +14,7 @@ function privateRoutes(
 ) {
   addUserAuthHook(fastify);
   fastify.register(usersPrivateRoutes);
+  fastify.register(booksPrivateRoutes);
   fastify.register(sessionPrivateRoutes);
   next();
 }
