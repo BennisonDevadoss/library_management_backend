@@ -10,7 +10,7 @@ export const modelOptions = {
 };
 
 export const attributes = {
-  role: {
+  name: {
     type: DataTypes.STRING(50),
     allowNull: false,
     validate: {

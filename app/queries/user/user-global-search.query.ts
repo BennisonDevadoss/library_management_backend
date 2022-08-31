@@ -14,7 +14,7 @@ function globalSearchQuery(q: string | undefined) {
     mobile_no: { [Op.iLike]: `%${text}%` }
   });
   searchQueries.push({
-    '$roles.role$': { [Op.iLike]: `%${text}%` }
+    '$roles.name$': { [Op.iLike]: `%${text}%` }
   });
   return {
     [Op.or]: searchQueries

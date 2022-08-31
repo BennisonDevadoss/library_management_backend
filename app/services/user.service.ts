@@ -63,7 +63,7 @@ async function list(query: UserListQueryParams) {
       name: row.name,
       email: row.email,
       mobileNo: row.mobile_no,
-      role: row.roles?.role
+      role: row.roles?.name
     };
     return userData;
   });
@@ -93,7 +93,7 @@ async function detail(id: number) {
     id: user.id,
     name: user.name,
     email: user.email,
-    role: user.roles?.role,
+    role: user.roles?.name,
     mobileNo: user.mobile_no
   };
   return userData;
