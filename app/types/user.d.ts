@@ -1,4 +1,4 @@
-import { Model, BuildOptions, HasOneGetAssociationMixin } from 'sequelize';
+import { Model, BuildOptions } from 'sequelize';
 import { RoleInstance } from './role';
 
 export interface UserAttributes {
