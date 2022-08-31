@@ -8,7 +8,7 @@ export interface UserAttributes {
   password: string;
   created_at: Date;
   updated_at: Date;
-  mobile_no: string,
+  mobile_no: string;
   created_by: bigint;
   updated_by: bigint;
   sign_in_count: number;
@@ -26,8 +26,10 @@ export type UserCreateAttributes = Pick<UserAttributes, 'email' | 'name'>;
 export interface UserInstance
   extends Model<UserAttributes, UserCreateAttributes>,
     UserAttributes {
-  roles?: RoleInstance;
-  getRoles: () => any;
+  isAdmin(): () => boolean;
+  isAgent(): () => boolean;
+  getRoles: () => RoleInstance;
+  roles?: any;
 }
 
 export type UserStatic = typeof Model & {

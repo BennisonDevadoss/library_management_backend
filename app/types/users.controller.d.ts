@@ -14,3 +14,9 @@ export interface UserListQueryParams {
   per_page?: number;
   mobile_no?: string;
 }
+
+export interface UserUpdateParams {
+  name: string;
+  role_id: number;
+  mobile_no: string;
+}
