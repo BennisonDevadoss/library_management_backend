@@ -7,7 +7,7 @@ import {
   list,
   detail,
   update,
-  destroy,
+  destroy
 } from '../services/user.service';
 import {
   AddUserParams,
