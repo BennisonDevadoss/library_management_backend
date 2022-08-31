@@ -16,7 +16,7 @@ export const attributes = {
     validate: {
       notNull: {
         args: true,
-        msg: "Role can't be empty"
+        msg: 'Role can\'t be empty'
       }
     }
   },
@@ -25,7 +25,7 @@ export const attributes = {
     allowNull: false,
     notNull: {
       args: true,
-      msg: "created_at can't be empty"
+      msg: 'created_at can\'t be empty'
     }
   },
   updated_at: {
