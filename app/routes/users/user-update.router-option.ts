@@ -1,6 +1,8 @@
 import { adminSecureErrors, headers } from '../shared-schema';
 
 const userUpdateRouterOpts = {
+  tags: ['admin', 'users'],
+  description: 'update user',
   headers,
   params: {
     type: 'object',

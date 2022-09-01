@@ -1,6 +1,8 @@
 import { adminSecureErrors, headers } from '../shared-schema';
 
 const bookUpdateRoutesOpts = {
+  tags: ['admin', 'books'],
+  description: 'update book',
   headers,
   params: {
     type: 'object',
