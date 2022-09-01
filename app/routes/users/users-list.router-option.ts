@@ -17,6 +17,7 @@ const userListRouterOpts = {
     }
   },
   response: {
+    headers,
     200: {
       type: 'object',
       properties: {

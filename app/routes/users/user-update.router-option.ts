@@ -18,6 +18,7 @@ const userUpdateRouterOpts = {
     }
   },
   response: {
+    headers,
     200: {
       type: 'object',
       properties: {

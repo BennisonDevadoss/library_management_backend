@@ -16,6 +16,7 @@ const bookCreateRoutesOpts = {
     }
   },
   response: {
+    headers,
     201: {
       type: 'object',
       properties: {
