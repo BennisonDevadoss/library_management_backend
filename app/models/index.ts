@@ -1,5 +1,5 @@
 import User from './user/user.model';
-import Role from './role/user.model';
+import Role from './role/role.model';
 import Book from './book/book.model';
 
 import userScopeAndAssociation from './user/user.scopes.associations';

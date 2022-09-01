@@ -5,8 +5,9 @@ module.exports = {
     await queryInterface.createTable('books', {
       id: {
         type: Sequelize.BIGINT,
-        primarykey: true,
-        autoincremant: true
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true
       },
       name: {
         type: Sequelize.STRING(100),
@@ -21,7 +22,7 @@ module.exports = {
         allowNull: true
       },
       rating: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.NUMERIC,
         allowNull: true
       },
       price: {

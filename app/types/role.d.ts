@@ -2,12 +2,12 @@ import { BuildOptions, Model } from 'sequelize/types';
 
 export interface RoleAttributes {
   id: bigint;
-  role: string;
+  name: string;
   created_at: Date;
   updated_at: Date;
 }
 
-export type RoleCreationAttributes = Pick<RoleAttributes, 'role'>;
+export type RoleCreationAttributes = Pick<RoleAttributes, 'name'>;
 
 export interface RoleInstance
   extends Model<RoleAttributes, RoleCreationAttributes>,

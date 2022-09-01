@@ -20,7 +20,7 @@ function columnSearchQuery(query) {
   }
   if (role) {
     searchQueries.push({
-      '$roles.role$': { [Op.iLike]: `%${role}%` }
+      '$roles.name$': { [Op.iLike]: `%${role}%` }
     });
   }
   return {
