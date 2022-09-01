@@ -37,7 +37,7 @@ async function markSignIn(
   };
   const updatedUser = await user.update(userUpdateAttributes);
   const userRole = await updatedUser.getRoles();
-  updatedUser.roles = userRole.role;
+  updatedUser.roles = userRole.name;
   return updatedUser;
 }
 

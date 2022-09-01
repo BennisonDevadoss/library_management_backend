@@ -1,6 +1,6 @@
 import { adminSecureErrors } from '../shared-schema';
 
-const userCreateRoutesOpts = {
+const userCreateRouterOpts = {
   description: 'add user',
   tags: ['users', 'admin'],
   body: {
@@ -27,4 +27,4 @@ const userCreateRoutesOpts = {
   }
 };
 
-export default userCreateRoutesOpts;
+export default userCreateRouterOpts;

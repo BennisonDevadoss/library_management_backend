@@ -9,7 +9,12 @@ import { generateRandomPassword } from '../lib/generate-password';
 import { map, size } from 'lodash';
 import { Role, User } from '../models';
 import { paginate, paginatorResult } from '../lib/paginator-result';
-import { AddUserParams, UserListQueryParams } from '../types/users.controller';
+
+import {
+  AddUserParams,
+  UserUpdateParams,
+  UserListQueryParams
+} from '../types/users.controller';
 
 async function getUserByid(id: number) {
   const user = await User.findByPk(id);
@@ -28,11 +33,10 @@ async function add(attrs: AddUserParams, currentUser: UserInstance) {
     password_confirmation: defaultPassword
   };
   const user = await User.create(userCreateAttrs);
-  // sendInvitation(user);
   const userRole = await user.getRoles();
   const userData = {
-    ...user,
-    role: userRole.role
+    ...user.toJSON(),
+    role: userRole.name
   };
   return userData;
 }
@@ -40,8 +44,8 @@ async function add(attrs: AddUserParams, currentUser: UserInstance) {
 async function list(query: UserListQueryParams) {
   const page = query.page && query.page > 0 ? query.page : 1;
   const perPage = query.per_page && query.per_page > 0 ? query.per_page : 10;
-  const limit = perPage;
   const offSet = (page - 1) * perPage;
+  const limit = perPage;
   const queries =
     size(query.q) >= Q_MINIMUM_SIZE ? globalSearchQuery(query.q) : {};
   const columnQuery = columnSearchQuery(query);
@@ -63,7 +67,7 @@ async function list(query: UserListQueryParams) {
       name: row.name,
       email: row.email,
       mobileNo: row.mobile_no,
-      role: row.roles?.role
+      role: row.roles?.name
     };
     return userData;
   });
@@ -93,10 +97,29 @@ async function detail(id: number) {
     id: user.id,
     name: user.name,
     email: user.email,
-    role: user.roles?.role,
+    role: user.roles?.name,
     mobileNo: user.mobile_no
   };
   return userData;
 }
 
-export { add, list, detail, destroy };
+async function update(
+  id: number,
+  attrs: UserUpdateParams,
+  currentUser: UserInstance
+) {
+  const user = await getUserByid(id);
+  const userUpdateAttrs = {
+    ...attrs,
+    updated_by: currentUser.id
+  };
+  await user.update(userUpdateAttrs);
+  const userRole = await user.getRoles();
+  const updatedUser = {
+    ...user.toJSON(),
+    role: userRole.name
+  };
+  return updatedUser;
+}
+
+export { add, list, detail, update, destroy, getUserByid };

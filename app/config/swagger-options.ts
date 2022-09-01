@@ -19,6 +19,10 @@ const tagOptions = [
   {
     name: 'users',
     description: 'routes related to users'
+  },
+  {
+    name: 'books',
+    description: 'routes relaed to books'
   }
 ];
 
