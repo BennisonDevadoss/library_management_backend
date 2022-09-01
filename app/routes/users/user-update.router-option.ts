@@ -1,19 +1,24 @@
-import { adminSecureErrors } from '../shared-schema';
+import { adminSecureErrors, headers } from '../shared-schema';
 
-const userCreateRouterOpts = {
-  description: 'add user',
-  tags: ['users', 'admin'],
+const userUpdateRouterOpts = {
+  headers,
+  params: {
+    type: 'object',
+    required: ['id'],
+    properties: {
+      id: { type: 'number' }
+    }
+  },
   body: {
     type: 'object',
     properties: {
       name: { type: 'string' },
-      email: { type: 'string' },
       role_id: { type: 'number' },
       mobile_no: { type: 'string' }
     }
   },
   response: {
-    201: {
+    200: {
       type: 'object',
       properties: {
         id: { type: 'number' },
@@ -27,4 +32,4 @@ const userCreateRouterOpts = {
   }
 };
 
-export default userCreateRouterOpts;
+export default userUpdateRouterOpts;
