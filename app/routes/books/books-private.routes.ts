@@ -1,6 +1,6 @@
-import bookCreateRoutesOpts from './books-add.router-options';
-import bookUpdateRoutesOpts from './books-update-router-options';
-import bookDetailRoutesOpts from './books-detail.router-options';
+import bookCreateRouterOpts from './books-add.router-options';
+import bookUpdateRouterOpts from './books-update-router-options';
+import bookDetailRouterOpts from './books-detail.router-options';
 
 import { FastifyInstance } from 'fastify';
 
@@ -21,14 +21,14 @@ function booksPrivateRoutes(
   fastify.route({
     url: '/v1/books',
     method: 'POST',
-    schema: bookCreateRoutesOpts,
+    schema: bookCreateRouterOpts,
     preHandler: canAdd,
     handler: createBook
   });
   fastify.route({
     url: '/v1/books/:id',
     method: 'PUT',
-    schema: bookUpdateRoutesOpts,
+    schema: bookUpdateRouterOpts,
     preHandler: canUpdate,
     handler: updateBook
   });
@@ -36,7 +36,7 @@ function booksPrivateRoutes(
     url: '/v1/books/:id',
     method: 'GET',
     preHandler: canDetail,
-    schema: bookDetailRoutesOpts,
+    schema: bookDetailRouterOpts,
     handler: detailBook
   });
   next();
