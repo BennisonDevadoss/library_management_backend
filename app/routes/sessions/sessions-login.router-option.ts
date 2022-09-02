@@ -1,4 +1,4 @@
-import { adminSecureErrors } from '../shared-schema';
+import { adminSecureErrors, headers } from '../shared-schema';
 
 const loginRouterOpts = {
   description: 'post login credentials',
@@ -12,6 +12,7 @@ const loginRouterOpts = {
     }
   },
   response: {
+    headers,
     200: {
       description: 'successfully logged in',
       type: 'object',

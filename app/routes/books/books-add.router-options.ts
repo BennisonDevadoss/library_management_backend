@@ -1,6 +1,6 @@
 import { adminSecureErrors, headers } from '../shared-schema';
 
-const bookCreateRoutesOpts = {
+const bookCreateRouterOpts = {
   headers,
   description: 'add book',
   tags: ['books', 'admin'],
@@ -16,6 +16,7 @@ const bookCreateRoutesOpts = {
     }
   },
   response: {
+    headers,
     201: {
       type: 'object',
       properties: {
@@ -31,4 +32,4 @@ const bookCreateRoutesOpts = {
   }
 };
 
-export default bookCreateRoutesOpts;
+export default bookCreateRouterOpts;

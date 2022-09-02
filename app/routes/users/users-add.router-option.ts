@@ -1,8 +1,9 @@
-import { adminSecureErrors } from '../shared-schema';
+import { headers, adminSecureErrors } from '../shared-schema';
 
 const userCreateRouterOpts = {
   description: 'add user',
   tags: ['users', 'admin'],
+  headers,
   body: {
     type: 'object',
     properties: {
@@ -13,6 +14,7 @@ const userCreateRouterOpts = {
     }
   },
   response: {
+    headers,
     201: {
       type: 'object',
       properties: {

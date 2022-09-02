@@ -1,23 +1,14 @@
 import { adminSecureErrors, headers } from '../shared-schema';
 
-const bookUpdateRouterOpts = {
+export const bookDetailRouterOpts = {
   tags: ['admin', 'books'],
-  description: 'update book',
+  descripton: 'detail books',
   headers,
   params: {
     type: 'object',
     required: ['id'],
     properties: {
       id: { type: 'number' }
-    }
-  },
-  body: {
-    type: 'object',
-    properties: {
-      name: { type: 'string' },
-      author: { type: 'string' },
-      price: { type: 'string' },
-      description: { type: 'string' }
     }
   },
   response: {
@@ -27,9 +18,10 @@ const bookUpdateRouterOpts = {
       properties: {
         id: { type: 'number' },
         name: { type: 'string' },
-        price: { type: 'string' },
+        price: { type: 'number' },
         author: { type: 'string' },
         rating: { type: 'number' },
+        mobile_no: { type: 'string' },
         description: { type: 'string' }
       }
     },
@@ -37,4 +29,4 @@ const bookUpdateRouterOpts = {
   }
 };
 
-export default bookUpdateRouterOpts;
+export default bookDetailRouterOpts;

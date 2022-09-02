@@ -31,4 +31,8 @@ async function update(
   return book.update(bookUpdateAttrs);
 }
 
-export { create, update };
+async function detail(id: number) {
+  const user = await getBookById(id);
+  return user;
+}
+export { create, update, detail };

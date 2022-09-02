@@ -11,6 +11,7 @@ const userDetailRouterOpts = {
     }
   },
   response: {
+    headers,
     200: {
       type: 'object',
       properties: {
