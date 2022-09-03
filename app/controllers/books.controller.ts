@@ -3,9 +3,19 @@ import { UserInstance } from '../types';
 import { BookInstance } from 'app/types/book';
 
 import { FastifyReply, FastifyRequest } from 'fastify';
-import { AddBookParams, UpdatePookParams } from '../types/books.controller';
 
-import { create, update, detail } from '../services/book.service';
+import {
+  create,
+  update,
+  detail,
+  filterAndPaginate
+} from '../services/book.service';
+
+import {
+  AddBookParams,
+  UpdatePookParams,
+  BookListQueryParams
+} from '../types/books.controller';
 
 function createBook(req: FastifyRequest, reply: FastifyReply) {
   const params = req.body as AddBookParams;
@@ -13,6 +23,17 @@ function createBook(req: FastifyRequest, reply: FastifyReply) {
   create(params, currentUser)
     .then((book: BookInstance) => {
       reply.code(201).send(book);
+    })
+    .catch((error: FastifyError) => {
+      reply.send(error);
+    });
+}
+
+function listBooks(req: FastifyRequest, reply: FastifyReply) {
+  const query = req.query as BookListQueryParams;
+  filterAndPaginate(query)
+    .then((books) => {
+      reply.code(200).send(books);
     })
     .catch((error: FastifyError) => {
       reply.send(error);
@@ -41,4 +62,4 @@ function detailBook(req: FastifyRequest, reply: FastifyReply) {
     .catch((error: FastifyError) => [reply.send(error)]);
 }
 
-export { createBook, updateBook, detailBook };
+export { listBooks, createBook, updateBook, detailBook };
