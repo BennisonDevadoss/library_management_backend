@@ -5,10 +5,10 @@ import { BookStatic } from '../../types/book';
 
 import { attributes, modelOptions } from './book.model.attributes';
 
-function BookModelAttributes(sequelize: Sequelize): BookStatic {
-  return sequelize.define('books', attributes, modelOptions) as BookStatic;
+function BookModelFactory(sequelize: Sequelize): BookStatic {
+  return sequelize.define('Book', attributes, modelOptions) as BookStatic;
 }
 
-const Book = BookModelAttributes(db);
+const Book = BookModelFactory(db);
 
 export default Book;
