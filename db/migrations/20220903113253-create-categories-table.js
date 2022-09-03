@@ -7,7 +7,7 @@ module.exports = {
         type: Sequelize.BIGINT,
         allowNull: false,
         primaryKey: true,
-        autoIncreament: true
+        autoIncrement: true
       },
       name: {
         type: Sequelize.STRING(100),
