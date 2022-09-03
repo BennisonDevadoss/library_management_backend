@@ -1,4 +1,6 @@
-import { BuildOptions, Model } from 'sequelize';
+import { CategoryInstance } from './category';
+
+import { BelongsToGetAssociationMixin, BuildOptions, Model } from 'sequelize';
 
 export interface BookAttributes {
   id: bigint;
@@ -10,6 +12,7 @@ export interface BookAttributes {
   updated_at: Date;
   created_by: bigint;
   updated_by?: bigint;
+  category_id: bigint;
   description?: string;
 }
 
@@ -20,7 +23,10 @@ export type BookCreateAttributes = Pick<
 
 export interface BookInstance
   extends Model<BookAttributes, BookCreateAttributes>,
-    BookAttributes {}
+    BookAttributes {
+  getCategory: BelongsToGetAssociationMixin<CategoryInstance>;
+  category: CategoryInstance;
+}
 
 export type BookStatic = typeof Model & {
   new (value?: object, options?: BuildOptions): BookInstance;

@@ -1,20 +1,22 @@
+import Category from '../models/category/category.model';
 import globalSearchQuery from '../queries/book/book-global-search.query';
 import columnSearchQuery from '../queries/book/book-column-search-query';
 
 import { Book } from '../models';
-import { UserInstance } from '../types';
-import { BookInstance } from 'app/types/book';
 import { Q_MINIMUM_SIZE } from '../config/constants';
+import { getCategoryById } from './category.service';
 import { EmptyResultError } from 'sequelize';
 
 import { size, map } from 'lodash';
 import { paginate, paginatorResult } from '../lib/paginator-result';
 
 import {
+  UserInstance,
+  BookInstance,
   AddBookParams,
   UpdatePookParams,
   BookListQueryParams
-} from '../types/books.controller';
+} from '../types';
 
 async function getBookById(id: number) {
   const book = await Book.findByPk(id);
@@ -23,12 +25,20 @@ async function getBookById(id: number) {
   }
   return book;
 }
+
 async function create(attrs: AddBookParams, currentUser: UserInstance) {
+  const { category_id: categoryId } = attrs;
+  const category = await getCategoryById(categoryId);
   const bookCreateAttrs = {
     ...attrs,
     created_by: currentUser.id
   };
-  return await Book.create(bookCreateAttrs);
+  const book = await Book.create(bookCreateAttrs);
+  return {
+    ...book.toJSON(),
+    category_id: category.id,
+    category_name: category.name
+  };
 }
 
 async function filterAndPaginate(query: BookListQueryParams) {
@@ -42,7 +52,13 @@ async function filterAndPaginate(query: BookListQueryParams) {
   const books = await Book.findAndCountAll({
     limit: limit,
     offset: offSet,
-    where: { ...queries, ...columnQuery }
+    where: { ...queries, ...columnQuery },
+    include: [
+      {
+        model: Category,
+        as: 'category'
+      }
+    ]
   });
   const listOfBooks = map(books.rows, (row: BookInstance) => {
     const data = {
@@ -51,11 +67,13 @@ async function filterAndPaginate(query: BookListQueryParams) {
       price: row.price,
       author: row.author,
       rating: row.rating,
-      description: row.description
+      category_id: row.category.id,
+      description: row.description,
+      category_name: row.category.name
     };
     return data;
   });
-  const result = paginatorResult(listOfBooks.count, page, perPage);
+  const result = paginatorResult(books.count, page, perPage);
   return paginate(result, listOfBooks, 'books');
 }
 

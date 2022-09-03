@@ -11,6 +11,9 @@ function globalSearchQuery(text: string) {
   searchQueries.push({
     description: { [Op.iLike]: `%${text}%` }
   });
+  searchQueries.push({
+    '$category.name$': { [Op.iLike]: `%${text}%` }
+  });
   searchQueries.push(
     Sequelize.where(Sequelize.cast(Sequelize.col('rating'), 'varchar'), {
       [Op.iLike]: `%${text}%`
@@ -21,6 +24,7 @@ function globalSearchQuery(text: string) {
       [Op.iLike]: `%${text}%`
     })
   );
+
   return {
     [Op.or]: searchQueries
   };

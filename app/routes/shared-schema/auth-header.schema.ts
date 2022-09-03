@@ -3,7 +3,7 @@ const headers = {
   type: 'object',
   required: ['Authorization'],
   properties: {
-    Authorization: { type: 'string' }
+    Authorization: { type: ['string', 'null'] }
   }
 };
 

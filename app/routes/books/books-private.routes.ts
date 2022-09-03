@@ -1,3 +1,4 @@
+import bookListRouterOpts from './books-list.router-option';
 import bookCreateRouterOpts from './books-add.router-options';
 import bookUpdateRouterOpts from './books-update-router-options';
 import bookDetailRouterOpts from './books-detail.router-options';
@@ -41,10 +42,11 @@ function booksPrivateRoutes(
     handler: detailBook
   });
   fastify.route({
-    method:'GET',
+    method: 'GET',
     url: '/v1/books',
+    schema: bookListRouterOpts,
     handler: listBooks
-  })
+  });
   next();
 }
 
