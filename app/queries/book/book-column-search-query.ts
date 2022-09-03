@@ -1,9 +1,26 @@
-import { BookListQueryParams } from '../../types/books.controller';
+import { BookListQueryParams } from '../../types';
+
 import { Op, Sequelize } from 'sequelize';
 
 function columnSearchQuery(query: BookListQueryParams) {
-  const { name, author, price, rating, description } = query;
+  const {
+    name,
+    price,
+    author,
+    rating,
+    description,
+    category_name: categoryName
+  } = query;
+
   const searchQueries: any[] = [];
+
+  if (description) {
+    searchQueries.push({
+      description: {
+        [Op.iLike]: `%${description}%`
+      }
+    });
+  }
   if (name) {
     searchQueries.push({
       name: { [Op.iLike]: `%${name}%` }
@@ -12,6 +29,11 @@ function columnSearchQuery(query: BookListQueryParams) {
   if (author) {
     searchQueries.push({
       author: { [Op.iLike]: `%${author}%` }
+    });
+  }
+  if (categoryName) {
+    searchQueries.push({
+      '$category.name$': { [Op.iLike]: `%${categoryName}%` }
     });
   }
   if (price) {
@@ -27,13 +49,6 @@ function columnSearchQuery(query: BookListQueryParams) {
         [Op.iLike]: `%${rating}%`
       })
     );
-  }
-  if (description) {
-    searchQueries.push({
-      description: {
-        [Op.iLike]: `%${description}%`
-      }
-    });
   }
 
   return {

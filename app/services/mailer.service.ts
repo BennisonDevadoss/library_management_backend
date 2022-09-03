@@ -1,5 +1,6 @@
-import { UserInstance } from '../types';
 import nodemailer from 'nodemailer';
+
+import { UserInstance } from '../types';
 
 const options = {
   host: process.env.SMTP_HOST,

@@ -1,10 +1,14 @@
-import User from '../user/user.model';
-import Book from './book.model';
+import { Book, User, Category } from '../index';
 
 function defineScopeAndAssociation() {
   Book.belongsTo(User, {
     foreignKey: 'created_by',
     as: 'users'
+  });
+
+  Book.belongsTo(Category, {
+    foreignKey: 'category_id',
+    as: 'category'
   });
 }
 

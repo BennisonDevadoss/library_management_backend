@@ -31,6 +31,20 @@ export const attributes = {
       }
     }
   },
+  category_id: {
+    type: DataTypes.BIGINT,
+    allowNull: false,
+    references: {
+      model: 'categories',
+      key: 'id'
+    },
+    validate: {
+      notNull: {
+        args: true,
+        msg: 'category_id can\'t be empty'
+      }
+    }
+  },
   description: {
     type: DataTypes.STRING(100),
     allowNull: true

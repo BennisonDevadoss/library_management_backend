@@ -1,8 +1,8 @@
 import { headers, adminSecureErrors, pagination } from '../shared-schema';
 
-const userListRouterOpts = {
-  description: 'list users',
-  tags: ['admin', 'agent', 'users'],
+const bookListRouterOpts = {
+  description: 'List books',
+  tags: ['admin', 'books'],
   headers,
   querystring: {
     type: 'object',
@@ -10,10 +10,11 @@ const userListRouterOpts = {
       q: { type: 'string' },
       page: { type: 'number' },
       name: { type: 'string' },
-      role: { type: 'string' },
-      email: { type: 'string' },
+      price: { type: 'string' },
+      rating: { type: 'string' },
+      author: { type: 'string' },
       per_page: { type: 'number' },
-      mobile_no: { type: 'string' }
+      description: { type: 'string' }
     }
   },
   response: {
@@ -22,16 +23,19 @@ const userListRouterOpts = {
       type: 'object',
       properties: {
         pagination,
-        users: {
+        books: {
           type: 'array',
           items: {
             type: 'object',
             properties: {
               id: { type: 'number' },
-              role: { type: 'string' },
               name: { type: 'string' },
-              email: { type: 'string' },
-              mobile_no: { type: 'string' }
+              price: { type: 'number' },
+              rating: { type: 'number' },
+              author: { type: 'string' },
+              category_id: { type: 'number' },
+              description: { type: 'string' },
+              category_name: { type: 'string' }
             }
           }
         }
@@ -41,4 +45,4 @@ const userListRouterOpts = {
   }
 };
 
-export default userListRouterOpts;
+export default bookListRouterOpts;

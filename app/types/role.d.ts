@@ -1,4 +1,4 @@
-import { BuildOptions, Model } from 'sequelize/types';
+import { BuildOptions, Model } from 'sequelize';
 
 export interface RoleAttributes {
   id: bigint;

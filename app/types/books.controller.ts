@@ -3,6 +3,7 @@ export interface AddBookParams {
   price: number;
   author: string;
   rating?: number;
+  category_id: number;
   description?: string;
 }
 
@@ -22,4 +23,5 @@ export interface BookListQueryParams {
   author: string;
   per_page?: number;
   description: string;
+  category_name: string;
 }
