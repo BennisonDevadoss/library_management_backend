@@ -16,7 +16,7 @@ export const attributes = {
     validate: {
       notNull: {
         args: true,
-        msg: `name can't be empty`
+        msg: 'name can\'t be empty'
       }
     }
   },
@@ -30,7 +30,7 @@ export const attributes = {
     validate: {
       notNull: {
         args: true,
-        msg: `created_by can't be emptyI`
+        msg: 'created_by can\'t be emptyI'
       }
     }
   },
@@ -48,7 +48,7 @@ export const attributes = {
     validate: {
       notNull: {
         args: true,
-        msg: `created_at can't be empty`
+        msg: 'created_at can\'t be empty'
       }
     }
   },
@@ -58,7 +58,7 @@ export const attributes = {
     validate: {
       notNull: {
         args: true,
-        msg: `updated_at can't be empty`
+        msg: 'updated_at can\'t be empty'
       }
     }
   },
