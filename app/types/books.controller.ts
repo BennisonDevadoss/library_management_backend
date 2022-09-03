@@ -12,3 +12,14 @@ export interface UpdatePookParams {
   author: string;
   description: string;
 }
+
+export interface BookListQueryParams {
+  q?: string;
+  name: string;
+  page?: number;
+  price: string;
+  rating: string;
+  author: string;
+  per_page?: number;
+  description: string;
+}

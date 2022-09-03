@@ -18,7 +18,9 @@ export type BookCreateAttributes = Pick<
   'name' | 'price' | 'author' | 'rating' | 'description'
 >;
 
-export type BookInstance = Model<BookAttributes, BookCreateAttributes>;
+export interface BookInstance
+  extends Model<BookAttributes, BookCreateAttributes>,
+    BookAttributes {}
 
 export type BookStatic = typeof Model & {
   new (value?: object, options?: BuildOptions): BookInstance;

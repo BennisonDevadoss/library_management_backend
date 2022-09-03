@@ -8,6 +8,7 @@ import { canAdd, canDetail, canUpdate } from '../../hooks/book-policy.hooks';
 import { Server, IncomingMessage, ServerResponse } from 'http';
 
 import {
+  listBooks,
   createBook,
   updateBook,
   detailBook
@@ -39,6 +40,11 @@ function booksPrivateRoutes(
     schema: bookDetailRouterOpts,
     handler: detailBook
   });
+  fastify.route({
+    method:'GET',
+    url: '/v1/books',
+    handler: listBooks
+  })
   next();
 }
 

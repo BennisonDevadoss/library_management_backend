@@ -27,7 +27,7 @@ const logConfig = {
         hostname: request.hostname,
         remotePort: request.socket.remotePort,
         contentType: request.headers['content-type'],
-        remoteAddress: request.ip
+        remoteAddress: request.socket.remoteAddress
       };
     }
   }
