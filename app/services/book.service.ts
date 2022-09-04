@@ -82,17 +82,37 @@ async function update(
   attrs: UpdatePookParams,
   currentUser: UserInstance
 ) {
+  const { category_id: categoryId } = attrs;
   const book = await getBookById(id);
+  const category = await getCategoryById(categoryId);
   const bookUpdateAttrs = {
-    ...attrs,
-    updated_by: currentUser.id
+    name: attrs.name,
+    price: attrs.price,
+    author: attrs.author,
+    category_id: category.id,
+    updated_by: currentUser.id,
+    description: attrs.description
   };
-  return book.update(bookUpdateAttrs);
+  const updatedBook = await book.update(bookUpdateAttrs);
+  return {
+    id: updatedBook.id,
+    name: updatedBook.name,
+    category_id: category.id,
+    price: updatedBook.price,
+    rating: updatedBook.rating,
+    author: updatedBook.author,
+    category_name: category.name,
+    description: updatedBook.description
+  };
 }
 
 async function detail(id: number) {
-  const user = await getBookById(id);
-  return user;
+  const book = await getBookById(id);
+  const category = await book.getCategory();
+  return {
+    ...book.toJSON(),
+    category_name: category.name
+  };
 }
 
 export { create, update, detail, filterAndPaginate };

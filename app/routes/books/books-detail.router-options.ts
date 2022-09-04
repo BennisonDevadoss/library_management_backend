@@ -22,7 +22,9 @@ export const bookDetailRouterOpts = {
         author: { type: 'string' },
         rating: { type: 'number' },
         mobile_no: { type: 'string' },
-        description: { type: 'string' }
+        category_id: { type: 'number' },
+        description: { type: 'string' },
+        category_name: { type: 'string' }
       }
     },
     ...adminSecureErrors

@@ -30,7 +30,9 @@ const bookUpdateRouterOpts = {
         price: { type: 'string' },
         author: { type: 'string' },
         rating: { type: 'number' },
-        description: { type: 'string' }
+        description: { type: 'string' },
+        category_id: { type: 'number' },
+        category_name: { type: 'string' }
       }
     },
     ...adminSecureErrors
