@@ -115,4 +115,9 @@ async function detail(id: number) {
   };
 }
 
-export { create, update, detail, filterAndPaginate };
+async function bookDelete(id: number) {
+  const book = await getBookById(id);
+  return await book.destroy();
+}
+
+export { create, update, detail, bookDelete, filterAndPaginate };
