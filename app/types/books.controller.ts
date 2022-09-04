@@ -12,6 +12,7 @@ export interface UpdatePookParams {
   price: number;
   author: string;
   description: string;
+  category_id: number;
 }
 
 export interface BookListQueryParams {
