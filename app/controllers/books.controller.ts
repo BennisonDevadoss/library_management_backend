@@ -1,5 +1,5 @@
 import { FastifyError } from 'fastify';
-import { BookInstance, UserInstance } from '../types';
+import { UserInstance } from '../types';
 
 import { FastifyReply, FastifyRequest } from 'fastify';
 
@@ -7,6 +7,7 @@ import {
   create,
   update,
   detail,
+  bookDelete,
   filterAndPaginate
 } from '../services/book.service';
 
@@ -61,4 +62,15 @@ function detailBook(req: FastifyRequest, reply: FastifyReply) {
     .catch((error: FastifyError) => [reply.send(error)]);
 }
 
-export { listBooks, createBook, updateBook, detailBook };
+function deleteBook(req: FastifyRequest, reply: FastifyReply) {
+  const { id } = req.params as { id: number };
+  bookDelete(id)
+    .then(() => {
+      reply.send({ message: 'book deleted successfully' });
+    })
+    .catch((error: FastifyError) => {
+      reply.send(error);
+    });
+}
+
+export { listBooks, createBook, updateBook, detailBook, deleteBook };

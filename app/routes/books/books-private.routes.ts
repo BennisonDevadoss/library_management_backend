@@ -2,17 +2,24 @@ import bookListRouterOpts from './books-list.router-option';
 import bookCreateRouterOpts from './books-add.router-options';
 import bookUpdateRouterOpts from './books-update-router-options';
 import bookDetailRouterOpts from './books-detail.router-options';
+import bookDeleteRouterOpts from './books-delete.router-options';
 
 import { FastifyInstance } from 'fastify';
 
-import { canAdd, canDetail, canUpdate } from '../../hooks/book-policy.hooks';
 import { Server, IncomingMessage, ServerResponse } from 'http';
 
+import {
+  canAdd,
+  canDelete,
+  canDetail,
+  canUpdate
+} from '../../hooks/book-policy.hooks';
 import {
   listBooks,
   createBook,
   updateBook,
-  detailBook
+  detailBook,
+  deleteBook
 } from '../../controllers/books.controller';
 
 function booksPrivateRoutes(
@@ -46,6 +53,13 @@ function booksPrivateRoutes(
     url: '/v1/books',
     schema: bookListRouterOpts,
     handler: listBooks
+  });
+  fastify.route({
+    method: 'DELETE',
+    url: '/v1/books/:id',
+    schema: bookDeleteRouterOpts,
+    preHandler: canDelete,
+    handler: deleteBook
   });
   next();
 }
