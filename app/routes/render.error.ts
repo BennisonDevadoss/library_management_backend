@@ -1,5 +1,6 @@
 import logger from '../config/logger';
 import SessionError from '../exceptions/session.errors';
+import ImgUploadError from '../exceptions/image-upload.error';
 
 import { map } from 'lodash';
 
@@ -21,6 +22,8 @@ function renderError(reply: FastifyReply, errObj: FastifyError) {
     reply.code(400).send({ errors: message });
   } else if (errObj instanceof SessionError) {
     reply.code(401).send({ errors: [errObj.message] });
+  } else if (errObj instanceof ImgUploadError) {
+    reply.code(400).send({ errors: [errObj.message] });
   } else if (errObj instanceof EmptyResultError) {
     reply.code(404).send({ errors: [errObj.message] });
   } else if (errObj instanceof ValidationError) {
