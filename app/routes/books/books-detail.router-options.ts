@@ -14,6 +14,7 @@ export const bookDetailRouterOpts = {
   response: {
     headers,
     200: {
+      description: 'book detail',
       type: 'object',
       properties: {
         id: { type: 'number' },
