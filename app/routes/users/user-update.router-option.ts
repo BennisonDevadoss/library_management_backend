@@ -22,6 +22,7 @@ const userUpdateRouterOpts = {
   response: {
     headers,
     200: {
+      description: 'newly updated user',
       type: 'object',
       properties: {
         id: { type: 'number' },

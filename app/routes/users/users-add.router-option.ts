@@ -16,6 +16,7 @@ const userCreateRouterOpts = {
   response: {
     headers,
     201: {
+      description: 'newly added user',
       type: 'object',
       properties: {
         id: { type: 'number' },

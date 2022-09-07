@@ -15,6 +15,7 @@ const imageCreateRouterOpts = {
   },
   response: {
     201: {
+      description: 'newly added image',
       type: 'object',
       properties: {
         message: { type: 'string' }

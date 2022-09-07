@@ -18,6 +18,7 @@ const bookCreateRouterOpts = {
   response: {
     headers,
     201: {
+      description: 'newly added book',
       type: 'object',
       properties: {
         id: { type: 'number' },

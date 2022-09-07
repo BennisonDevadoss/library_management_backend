@@ -19,6 +19,7 @@ const userListRouterOpts = {
   response: {
     headers,
     200: {
+      description: 'list of users',
       type: 'object',
       properties: {
         pagination,
