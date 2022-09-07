@@ -2,6 +2,7 @@ import { headers, adminSecureErrors } from '../shared-schema';
 
 const imageDeleteRouterOpts = {
   headers,
+  tags: ['admin', 'agent', 'images'],
   description: 'delete image',
   params: {
     type: 'object',
@@ -13,6 +14,7 @@ const imageDeleteRouterOpts = {
   },
   response: {
     200: {
+      description: 'image deleted',
       type: 'object',
       properties: {
         message: { type: 'string' }
