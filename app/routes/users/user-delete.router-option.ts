@@ -3,7 +3,7 @@ import { headers, adminSecureErrors } from '../shared-schema';
 const userDeleteRouterOpts = {
   headers,
   tags: ['admin', 'users', 'users'],
-  description: 'user delete routes',
+  description: 'delete user',
   params: {
     type: 'object',
     required: ['id'],
