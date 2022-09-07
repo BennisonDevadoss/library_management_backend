@@ -120,4 +120,4 @@ async function bookDelete(id: number) {
   return await book.destroy();
 }
 
-export { create, update, detail, bookDelete, filterAndPaginate };
+export { create, update, detail, getBookById, bookDelete, filterAndPaginate };

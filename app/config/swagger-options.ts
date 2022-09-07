@@ -22,7 +22,11 @@ const tagOptions = [
   },
   {
     name: 'books',
-    description: 'routes relaed to books'
+    description: 'routes related to books'
+  },
+  {
+    name: 'images',
+    description: 'routes related to images'
   }
 ];
 
