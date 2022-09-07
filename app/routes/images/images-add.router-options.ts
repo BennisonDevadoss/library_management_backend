@@ -8,9 +8,9 @@ const imageCreateRouterOpts = {
   tags: ['admin', 'agent', 'images'],
   params: {
     type: 'object',
-    required: ['id'],
+    required: ['book_id'],
     properties: {
-      id: { type: 'number' }
+      book_id: { type: 'number' }
     }
   },
   response: {
