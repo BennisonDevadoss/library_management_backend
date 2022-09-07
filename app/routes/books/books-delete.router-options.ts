@@ -3,7 +3,7 @@ import { headers, adminSecureErrors } from '../shared-schema';
 const bookDeleteRouterOpts = {
   headers,
   tags: ['admin', 'books'],
-  description: 'book delete routes',
+  description: 'delete book',
   params: {
     type: 'object',
     properties: {

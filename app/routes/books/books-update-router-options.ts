@@ -23,6 +23,7 @@ const bookUpdateRouterOpts = {
   response: {
     headers,
     200: {
+      description: 'newly updated book',
       type: 'object',
       properties: {
         id: { type: 'number' },

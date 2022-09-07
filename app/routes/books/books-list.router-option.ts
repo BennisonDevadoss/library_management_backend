@@ -20,6 +20,7 @@ const bookListRouterOpts = {
   response: {
     headers,
     200: {
+      description: 'list of books',
       type: 'object',
       properties: {
         pagination,

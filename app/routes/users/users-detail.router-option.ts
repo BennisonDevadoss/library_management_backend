@@ -13,6 +13,7 @@ const userDetailRouterOpts = {
   response: {
     headers,
     200: {
+      description: 'user detail',
       type: 'object',
       properties: {
         id: { type: 'number' },
