@@ -3,7 +3,7 @@ import addUserAuthHook from '../hooks/user-authentication.hook';
 import { FastifyInstance } from 'fastify';
 import { usersPrivateRoutes } from './users';
 import { booksPrivateRoutes } from './books';
-import { imagesPrivateRoutes } from './images';
+import { postsPrivateRoutes } from './posts';
 import { sessionPrivateRoutes } from './sessions';
 
 import { IncomingMessage, Server, ServerResponse } from 'http';
@@ -16,7 +16,7 @@ function privateRoutes(
   addUserAuthHook(fastify);
   fastify.register(usersPrivateRoutes);
   fastify.register(booksPrivateRoutes);
-  fastify.register(imagesPrivateRoutes);
+  fastify.register(postsPrivateRoutes);
   fastify.register(sessionPrivateRoutes);
   next();
 }

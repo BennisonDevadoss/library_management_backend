@@ -2,14 +2,14 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('images', {
+    await queryInterface.createTable('posts', {
       id: {
         type: Sequelize.BIGINT,
         allowNull: false,
         primaryKey: true,
         autoIncrement: true
       },
-      image: {
+      post: {
         type: Sequelize.BLOB,
         allowNull: false
       },
@@ -52,6 +52,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('images');
+    await queryInterface.dropTable('posts');
   }
 };

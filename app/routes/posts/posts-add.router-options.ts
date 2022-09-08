@@ -1,11 +1,11 @@
 import { adminSecureErrors, headers } from '../shared-schema';
 
-const imageCreateRouterOpts = {
+const postCreateRouterOpts = {
   /*eslint-disable */
   description:
-    'Upload Image. Send the file in form-data with key as image and the Content-Type should be multipart/form-data',
+    'Upload post. Send the file in form-data with key as post and the Content-Type should be multipart/form-data',
   headers,
-  tags: ['admin', 'agent', 'images'],
+  tags: ['admin', 'agent', 'posts'],
   params: {
     type: 'object',
     required: ['book_id'],
@@ -15,7 +15,7 @@ const imageCreateRouterOpts = {
   },
   response: {
     201: {
-      description: 'newly added image',
+      description: 'newly added post',
       type: 'object',
       properties: {
         message: { type: 'string' }
@@ -25,4 +25,4 @@ const imageCreateRouterOpts = {
   }
 };
 
-export default imageCreateRouterOpts;
+export default postCreateRouterOpts;
