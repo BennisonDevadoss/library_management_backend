@@ -1,9 +1,9 @@
 import { headers, adminSecureErrors } from '../shared-schema';
 
-const imageDeleteRouterOpts = {
+const postDeleteRouterOpts = {
   headers,
-  tags: ['admin', 'agent', 'images'],
-  description: 'delete image',
+  tags: ['admin', 'agent', 'posts'],
+  description: 'delete post',
   params: {
     type: 'object',
     required: ['id', 'book_id'],
@@ -14,7 +14,7 @@ const imageDeleteRouterOpts = {
   },
   response: {
     200: {
-      description: 'image deleted',
+      description: 'post deleted',
       type: 'object',
       properties: {
         message: { type: 'string' }
@@ -24,4 +24,4 @@ const imageDeleteRouterOpts = {
   }
 };
 
-export default imageDeleteRouterOpts;
+export default postDeleteRouterOpts;

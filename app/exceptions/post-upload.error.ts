@@ -1,4 +1,4 @@
-class ImgUploadError extends Error {
+class PostUploadError extends Error {
   constructor(message?: any) {
     super(message);
     this.name = 'ImgUploadError';
@@ -6,4 +6,4 @@ class ImgUploadError extends Error {
   }
 }
 
-export default ImgUploadError;
+export default PostUploadError;

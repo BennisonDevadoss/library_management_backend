@@ -1,3 +1,4 @@
+import cors from 'fastify-cors';
 import routes from './routes';
 import logger from './config/logger';
 import swagger from 'fastify-swagger';
@@ -13,9 +14,10 @@ const server: FastifyInstance<Server, IncomingMessage, ServerResponse> =
   });
 
 function build() {
+  server.register(cors);
   server.register(fastifyMultipart);
-  server.register(swagger, swaggerOptions);
   server.register(routes);
+  server.register(swagger, swaggerOptions);
   return server;
 }
 

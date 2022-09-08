@@ -1,18 +1,18 @@
-import ImgUploadError from '../exceptions/image-upload.error';
+import ImgUploadError from '../exceptions/post-upload.error';
 import UnauthorizedError from '../exceptions/unauthorized.error';
 
-import { Image } from '../models';
+import { Post } from '../models';
 import { Multipart } from 'fastify-multipart';
 import { getBookById } from './book.service';
 import { UserInstance } from '../types';
 import { EmptyResultError } from 'sequelize';
 
-async function getImageById(id: number, bookId: number) {
-  const image = await Image.findOne({ where: { id: id, book_id: bookId } });
-  if (!image) {
-    throw new EmptyResultError('Image not found');
+async function getPostById(id: number, bookId: number) {
+  const post = await Post.findOne({ where: { id: id, book_id: bookId } });
+  if (!post) {
+    throw new EmptyResultError('Post not found');
   }
-  return image;
+  return post;
 }
 
 async function create(
@@ -26,26 +26,26 @@ async function create(
   }
   const base64 = (await (await file).toBuffer()).toString('base64');
   const book = await getBookById(bookId);
-  const imageCreateAttrs = {
-    image: base64,
+  const postCreateAttrs = {
+    post: base64,
     book_id: book.id,
     created_by: currentUser.id
   };
-  await Image.create(imageCreateAttrs);
+  await Post.create(postCreateAttrs);
   return;
 }
 
-async function imageDelete(
+async function postDelete(
   id: number,
   bookId: number,
   currentUser: UserInstance
 ) {
   await getBookById(bookId);
-  const image = await getImageById(id, bookId);
-  if (!(image.created_by === currentUser.id)) {
+  const post = await getPostById(id, bookId);
+  if (!(post.created_by === currentUser.id)) {
     throw new UnauthorizedError('You are not allowed to perform this action');
   }
-  return await image.destroy();
+  return await post.destroy();
 }
 
-export { create, imageDelete };
+export { create, postDelete };

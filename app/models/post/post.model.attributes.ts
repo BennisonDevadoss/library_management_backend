@@ -3,20 +3,20 @@ import { DataTypes } from 'sequelize';
 export const modelOptions = {
   paranoid: true,
   underscored: true,
-  tableName: 'images',
+  tableName: 'posts',
   createdAt: 'created_at',
   updatedAt: 'updated_at',
   deleted_at: 'deleted_at'
 };
 
 export const attributes = {
-  image: {
+  post: {
     type: DataTypes.BLOB,
     allowNull: false,
     validate: {
       notNull: {
         args: true,
-        msg: 'image can\'t be empty'
+        msg: 'post can\'t be empty'
       }
     }
   },

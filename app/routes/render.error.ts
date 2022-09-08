@@ -1,6 +1,6 @@
 import logger from '../config/logger';
 import SessionError from '../exceptions/session.errors';
-import ImgUploadError from '../exceptions/image-upload.error';
+import PostUploadError from '../exceptions/post-upload.error';
 import UnauthorizedError from '../exceptions/unauthorized.error';
 
 import { map } from 'lodash';
@@ -29,7 +29,7 @@ function renderError(reply: FastifyReply, errObj: FastifyError) {
     const message = map(errObj.errors, (err: any) => err.message);
     reply.code(404).send(message);
   } else if (
-    errObj instanceof ImgUploadError ||
+    errObj instanceof PostUploadError ||
     errObj instanceof UnauthorizedError
   ) {
     reply.code(400).send({ errors: [errObj.message] });
