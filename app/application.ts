@@ -14,10 +14,16 @@ const server: FastifyInstance<Server, IncomingMessage, ServerResponse> =
   });
 
 function build() {
-  server.register(cors);
+  server.register(cors, {
+    origin: '*',
+    methods: 'OPTION, GET,HEAD,PUT,PATCH,POST,DELETE',
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
+    exposedHeaders: 'Authorization'
+  });
   server.register(fastifyMultipart);
-  server.register(routes);
   server.register(swagger, swaggerOptions);
+  server.register(routes);
   return server;
 }
 
