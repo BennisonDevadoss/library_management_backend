@@ -16,7 +16,7 @@ export const attributes = {
     validate: {
       notNull: {
         args: true,
-        msg: `name can't be empty`
+        msg: 'name can\'t be empty'
       }
     }
   },
