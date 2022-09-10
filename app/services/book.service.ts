@@ -42,8 +42,8 @@ async function create(attrs: AddBookParams, currentUser: UserInstance) {
 }
 
 async function filterAndPaginate(query: BookListQueryParams) {
-  const page = query.page ? query.page : 1;
-  const perPage = query.per_page && query.per_page <= 10 ? query.per_page : 10;
+  const page = query.page && query.page >= 1 ? query.page : 1;
+  const perPage = query.per_page && query.per_page <= 20 ? query.per_page : 10;
   const limit = perPage;
   const offSet = (page - 1) * perPage;
   const queries =

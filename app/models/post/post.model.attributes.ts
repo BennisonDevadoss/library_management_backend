@@ -6,7 +6,8 @@ export const modelOptions = {
   tableName: 'posts',
   createdAt: 'created_at',
   updatedAt: 'updated_at',
-  deleted_at: 'deleted_at'
+  deletedAt: 'deleted_at',
+  indexes: [{ fields: ['post', 'book_id'] }]
 };
 
 export const attributes = {
@@ -16,7 +17,7 @@ export const attributes = {
     validate: {
       notNull: {
         args: true,
-        msg: 'post can\'t be empty'
+        msg: "post can't be empty"
       }
     }
   },
@@ -30,7 +31,7 @@ export const attributes = {
     validate: {
       notNull: {
         args: true,
-        msg: 'book_id can\'t be empty'
+        msg: "book_id can't be empty"
       }
     }
   },
@@ -44,7 +45,7 @@ export const attributes = {
     validate: {
       notNull: {
         args: true,
-        msg: 'creted_by can\'t be empty'
+        msg: "creted_by can't be empty"
       }
     }
   },
@@ -61,7 +62,7 @@ export const attributes = {
     validate: {
       notNull: {
         args: true,
-        msg: 'created_at can\'t be empty'
+        msg: "created_at can't be empty"
       }
     }
   },
@@ -71,7 +72,7 @@ export const attributes = {
     validate: {
       notNull: {
         args: true,
-        msg: 'updated_at can\'t be empty'
+        msg: "updated_at can't be empty"
       }
     }
   },

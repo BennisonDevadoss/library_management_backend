@@ -11,18 +11,18 @@ export enum Reaction {
 
 export interface PostReactionAttributes {
   id: bigint;
-  reaction: Reaction;
   book_id: bigint;
   user_id: bigint;
-  reaction_change_count: number;
-  previous_reaction: Reaction | null;
   created_at: Date;
   updated_at: Date;
+  reaction_id: bigint;
+  reaction_change_count: number;
+  previous_reaction_id: bigint | null;
 }
 
 export type PostReactionCreationAttributes = Pick<
   PostReactionAttributes,
-  'book_id' | 'reaction' | 'user_id'
+  'book_id' | 'reaction_id' | 'user_id'
 >;
 
 export interface PostReactionInstance

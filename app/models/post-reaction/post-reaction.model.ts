@@ -1,64 +1,18 @@
-import { DataTypes, Sequelize } from 'sequelize';
+import db from '../../config/database';
 
-/* PERFORMATING HARD DELETE */
-export const modelOptions = {
-  underscroed: true,
-  createdAt: 'created_at',
-  updatedAt: 'updated_at',
-  tableName: 'post_reactions'
-};
+import { Sequelize } from 'sequelize';
+import { PostReactionStatic } from '../../types/post-reaction';
 
-export const attributes = {
-  reaction: {
-    type: DataTypes.ENUM,
-    values: ['Like', 'Love', 'Haha', 'Wow', 'Sad', 'Angry'],
-    allowNull: false,
-    validate: {
-      notNull: {
-        args: true,
-        msg: 'reaction can\'t be empty'
-      }
-    }
-  },
-  book_id: {
-    type: DataTypes.BIGINT,
-    allowNull: false,
-    references: {
-      model: 'books',
-      key: 'id'
-    },
-    validate: {
-      notNull: {
-        args: true,
-        msg: 'book_id can\'t be empty'
-      }
-    }
-  },
-  user_id: {
-    type: DataTypes.BIGINT,
-    allowNull: false,
-    references: {
-      model: 'users',
-      key: 'id'
-    },
-    validate: {
-      notNull: {
-        args: true,
-        msg: 'user_id can\'t be empty'
-      }
-    }
-  },
-  reaction_change_count: {
-    type: DataTypes.INTEGER,
-    defaultValue: 0
-  },
-  previous_reaction: {
-    type: DataTypes.STRING(5)
-  },
-  created_at: {
-    type: DataTypes.DATE
-  },
-  updated_at: {
-    type: DataTypes.DATE
-  }
-};
+import { attributes, modelOptions } from './post-reaction.model.attributes';
+
+function PostReactionModelFactory(sequelize: Sequelize): PostReactionStatic {
+  return sequelize.define(
+    'PostReaction',
+    attributes,
+    modelOptions
+  ) as PostReactionStatic;
+}
+
+const PostReaction = PostReactionModelFactory(db);
+
+export default PostReaction;
