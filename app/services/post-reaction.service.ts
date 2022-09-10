@@ -1,4 +1,4 @@
-import PostReaction from 
+import PostReaction from
 '../models/post-reaction/post-reaction.model.attributes';
 
 import { getBookById } from './book.service';
