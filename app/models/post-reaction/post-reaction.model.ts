@@ -1,17 +1,17 @@
-import { DataTypes, Sequelize } from 'sequelize/types';
+import { DataTypes, Sequelize } from 'sequelize';
 
 /* PERFORMATING HARD DELETE */
 export const modelOptions = {
   underscroed: true,
-  created_at: 'createdAt',
-  updated_at: 'updatedAt',
+  createdAt: 'created_at',
+  updatedAt: 'updated_at',
   tableName: 'post_reactions'
 };
 
 export const attributes = {
   reaction: {
     type: DataTypes.ENUM,
-    values: ['like', 'love', 'haha', 'wow', 'sad', 'angry'],
+    values: ['Like', 'Love', 'Haha', 'Wow', 'Sad', 'Angry'],
     allowNull: false,
     validate: {
       notNull: {

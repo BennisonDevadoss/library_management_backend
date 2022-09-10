@@ -44,8 +44,7 @@ function userAuthenticate(fastify: FastifyInstance) {
             req.currentUser = user;
             reply.header('Authorization', `Bearer ${token}`);
           } else {
-            const error = ['session has expired'];
-            reply.code(440).send(error);
+            reply.code(440).send({ errors: ['session has expired'] });
           }
         } catch (error) {
           reply.code(440).send({ errors: ['session has expired'] });
