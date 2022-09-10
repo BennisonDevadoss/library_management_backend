@@ -6,7 +6,8 @@ export const modelOptions = {
   tableName: 'posts',
   createdAt: 'created_at',
   updatedAt: 'updated_at',
-  deleted_at: 'deleted_at'
+  deletedAt: 'deleted_at',
+  indexes: [{ fields: ['post', 'book_id'] }]
 };
 
 export const attributes = {

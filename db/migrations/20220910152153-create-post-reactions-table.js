@@ -9,10 +9,13 @@ module.exports = {
         primaryKey: true,
         allowNull: false
       },
-      reaction: {
-        type: Sequelize.ENUM,
+      reaction_id: {
+        type: Sequelize.BIGINT,
         allowNull: false,
-        values: ['Like', 'Love', 'Haha', 'Wow', 'Sad', 'Angry']
+        references: {
+          model: 'reactions',
+          key: 'id'
+        }
       },
       book_id: {
         type: Sequelize.BIGINT,
@@ -35,8 +38,12 @@ module.exports = {
         allowNull: false,
         defaultValue: 0
       },
-      previous_reaction: {
-        type: Sequelize.STRING(5)
+      previous_reaction_id: {
+        type: Sequelize.BIGINT,
+        references: {
+          model: 'reactions',
+          key: 'id'
+        }
       },
       created_at: {
         type: Sequelize.DATE,

@@ -29,16 +29,15 @@ const postReactionCreateRouterOpts = {
         id: { type: 'number' },
         book_id: { type: 'number' },
         user_id: { type: 'number' },
-        reaction: {
-          type: 'string',
-          enum: ['like', 'love', 'wow', 'haha', 'angry']
-        },
+        reaction_id: { type: 'number' },
+        reaction_name: { type: 'string' },
         reaction_change_count: { type: 'number' },
         previous_reaction: {
           type: ['string', 'null']
         }
       }
-    }
+    },
+    ...adminSecureErrors
   }
 };
 
