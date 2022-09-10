@@ -27,6 +27,10 @@ const tagOptions = [
   {
     name: 'posts',
     description: 'routes related to posts'
+  },
+  {
+    name: 'post-reactions',
+    description: 'routes related to post reactions'
   }
 ];
 

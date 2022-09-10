@@ -5,14 +5,14 @@ module.exports = {
     await queryInterface.createTable('post_reactions', {
       id: {
         type: Sequelize.BIGINT,
-        autoIncremement: true,
+        autoIncrement: true,
         primaryKey: true,
         allowNull: false
       },
       reaction: {
         type: Sequelize.ENUM,
         allowNull: false,
-        values: ['like', 'love', 'haha', 'wow', 'sad', 'angry']
+        values: ['Like', 'Love', 'Haha', 'Wow', 'Sad', 'Angry']
       },
       book_id: {
         type: Sequelize.BIGINT,

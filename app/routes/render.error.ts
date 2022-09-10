@@ -38,7 +38,7 @@ function renderError(reply: FastifyReply, errObj: FastifyError) {
     errObj.statusCode >= 400 &&
     errObj.statusCode <= 499
   ) {
-    reply.code(errObj.statusCode).send({ errrors: [errObj.message] });
+    reply.code(errObj.statusCode).send({ errors: [errObj.message] });
   } else {
     reply.code(500).send({
       errors: [
