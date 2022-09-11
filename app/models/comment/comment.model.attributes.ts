@@ -16,7 +16,7 @@ export const attributes = {
     validate: {
       notNull: {
         args: true,
-        msg: `comment can't be empty`
+        msg: 'comment can\'t be empty'
       }
     },
     book_id: {
@@ -29,7 +29,7 @@ export const attributes = {
       validate: {
         notNull: {
           args: true,
-          msg: `book_id can't be empty`
+          msg: 'book_id can\'t be empty'
         }
       }
     },
@@ -43,7 +43,7 @@ export const attributes = {
       validate: {
         notNull: {
           args: true,
-          msg: `user_id can't be empty`
+          msg: 'user_id can\'t be empty'
         }
       }
     },
