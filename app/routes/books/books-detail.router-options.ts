@@ -25,7 +25,20 @@ export const bookDetailRouterOpts = {
         mobile_no: { type: 'string' },
         category_id: { type: 'number' },
         description: { type: 'string' },
-        category_name: { type: 'string' }
+        category_name: { type: 'string' },
+        user_reaction: { type: ['string', 'null'] },
+        post_reactions: {
+          type: 'object',
+          properties: {
+            wow: { type: 'number' },
+            sad: { type: 'number' },
+            like: { type: 'number' },
+            love: { type: 'number' },
+            haha: { type: 'number' },
+            angry: { type: 'number' },
+            dislike: { type: 'number' }
+          }
+        }
       }
     },
     ...adminSecureErrors

@@ -8,8 +8,11 @@ import PostReaction from './post-reaction/post-reaction.model';
 
 import userScopeAndAssociation from './user/user.scopes.associations';
 import BookScopeAndAssociation from './book/book.scopes.associations';
+import PostReactionScopeAndAssociation
+from './post-reaction/post-reaction.scopes.associations';
 
 userScopeAndAssociation();
 BookScopeAndAssociation();
+PostReactionScopeAndAssociation();
 
 export { User, Role, Book, Post, Reaction, Category, PostReaction };
