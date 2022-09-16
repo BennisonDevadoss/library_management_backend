@@ -55,7 +55,8 @@ function updateBook(req: FastifyRequest, reply: FastifyReply) {
 
 function detailBook(req: FastifyRequest, reply: FastifyReply) {
   const { id } = req.params as { id: number };
-  detail(id)
+  const currentUser: UserInstance = req.currentUser;
+  detail(id, currentUser)
     .then((book) => {
       reply.code(200).send(book);
     })

@@ -1,13 +1,14 @@
+import db from '../config/database';
 import Category from '../models/category/category.model';
 import globalSearchQuery from '../queries/book/book-global-search.query';
 import columnSearchQuery from '../queries/book/book-column-search-query';
 
-import { Book } from '../models';
 import { Q_MINIMUM_SIZE } from '../config/constants';
 import { getCategoryById } from './category.service';
 import { EmptyResultError } from 'sequelize';
 
 import { size, map } from 'lodash';
+import { Book, PostReaction } from '../models';
 import { paginate, paginatorResult } from '../lib/paginator-result';
 
 import {
@@ -106,12 +107,30 @@ async function update(
   };
 }
 
-async function detail(id: number) {
+async function detail(id: number, currentUser: UserInstance) {
   const book = await getBookById(id);
   const category = await book.getCategory();
+
+  const postReactionCount: object = await db.query(`
+  SELECT SUM(CASE WHEN post_reactions.id = 1 THEN 1 ELSE 0 END) AS like,
+    SUM(CASE WHEN post_reactions.id = 2 THEN 1 ELSE 0 END) AS love,
+    SUM(CASE WHEN post_reactions.id = 3 THEN 1 ELSE 0 END) AS haha,
+    SUM(CASE WHEN post_reactions.id = 4 THEN 1 ELSE 0 END) AS wow,
+    SUM(CASE WHEN post_reactions.id = 5 THEN 1 ELSE 0 END) AS sad,
+    SUM(CASE WHEN post_reactions.id = 6 THEN 1 ELSE 0 END) AS angry,
+    SUM(CASE WHEN post_reactions.id = 7 THEN 1 ELSE 0 END) AS dislike
+  FROM post_reactions
+    WHERE book_id = ${book.id}
+  `);
+  const postReaction = await PostReaction.findOne({
+    where: { book_id: book.id, user_id: currentUser.id }
+  });
+  const userReaction = postReaction ? await postReaction.getReaction() : null;
   return {
     ...book.toJSON(),
-    category_name: category.name
+    category_name: category.name,
+    user_reaction: userReaction?.name,
+    post_reactions: postReactionCount[0][0]
   };
 }
 

@@ -1,4 +1,10 @@
-import { BuildOptions, Model } from 'sequelize';
+import { ReactionInstance } from './reaction';
+
+import {
+  Model,
+  BuildOptions,
+  BelongsToGetAssociationMixin
+} from 'sequelize';
 
 export enum Reaction {
   sad = 'Sad',
@@ -27,7 +33,9 @@ export type PostReactionCreationAttributes = Pick<
 
 export interface PostReactionInstance
   extends Model<PostReactionAttributes, PostReactionCreationAttributes>,
-    PostReactionAttributes {}
+    PostReactionAttributes {
+  getReaction: BelongsToGetAssociationMixin<ReactionInstance>;
+}
 
 export type PostReactionStatic = typeof Model & {
   new (value?: object, options?: BuildOptions): PostReactionInstance;
