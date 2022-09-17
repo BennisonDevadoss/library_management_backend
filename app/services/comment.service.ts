@@ -1,20 +1,20 @@
 import { Comment } from '../models';
 import { getBookById } from './book.service';
 import { UserInstance } from '../types';
-import { AddPostCommentParams } from '../types/comments.controller';
+import { AddCommentParams } from '../types/comments.controller';
 
 async function create(
   bookId: number,
-  attrs: AddPostCommentParams,
+  attrs: AddCommentParams,
   currentUser: UserInstance
 ) {
   const book = await getBookById(bookId);
-  const postCommentAttrs = {
+  const CommentAttrs = {
     book_id: book.id,
     comment: attrs.comment,
     user_id: currentUser.id
   };
-  await Comment.create(postCommentAttrs);
+  await Comment.create(CommentAttrs);
   return await book.getComments();
 }
 
