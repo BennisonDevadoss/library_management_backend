@@ -1,3 +1,4 @@
+import { CommentInstance } from './comment';
 import { CategoryInstance } from './category';
 
 import { BelongsToGetAssociationMixin, BuildOptions, Model } from 'sequelize';
@@ -25,6 +26,7 @@ export interface BookInstance
   extends Model<BookAttributes, BookCreateAttributes>,
     BookAttributes {
   getCategory: BelongsToGetAssociationMixin<CategoryInstance>;
+  getComments: BelongsToGetAssociationMixin<CommentInstance>;
   category: CategoryInstance;
 }
 
