@@ -5,6 +5,7 @@ import { usersPrivateRoutes } from './users';
 import { booksPrivateRoutes } from './books';
 import { postsPrivateRoutes } from './posts';
 import { sessionPrivateRoutes } from './sessions';
+import { categoriesPrivateRoutes } from './categories';
 import { postReactionsPrivateRoutes } from './post-reactions';
 
 import { IncomingMessage, Server, ServerResponse } from 'http';
@@ -19,6 +20,7 @@ function privateRoutes(
   fastify.register(booksPrivateRoutes);
   fastify.register(postsPrivateRoutes);
   fastify.register(sessionPrivateRoutes);
+  fastify.register(categoriesPrivateRoutes);
   fastify.register(postReactionsPrivateRoutes);
   next();
 }

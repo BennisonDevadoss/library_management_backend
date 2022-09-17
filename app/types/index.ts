@@ -7,4 +7,5 @@ export * from './post-reaction';
 export * from './users.controller';
 export * from './books.controller';
 export * from './sessions.controller';
+export * from './categories.controller';
 export * from './post-reactions.controller';
