@@ -18,7 +18,8 @@ export const attributes = {
         args: true,
         msg: 'comment can\'t be empty'
       }
-    },
+    }
+  },
     book_id: {
       type: DataTypes.BIGINT,
       allowNull: false,
@@ -57,5 +58,4 @@ export const attributes = {
     deleted_at: {
       type: DataTypes.DATE
     }
-  }
 };

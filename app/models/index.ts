@@ -2,6 +2,7 @@ import User from './user/user.model';
 import Role from './role/role.model';
 import Book from './book/book.model';
 import Post from './post/post.model';
+import Comment from './comment/comment.model';
 import Reaction from './reaction/reaction.model';
 import Category from './category/category.model';
 import PostReaction from './post-reaction/post-reaction.model';
@@ -15,4 +16,4 @@ userScopeAndAssociation();
 BookScopeAndAssociation();
 PostReactionScopeAndAssociation();
 
-export { User, Role, Book, Post, Reaction, Category, PostReaction };
+export { User, Role, Book, Post, Comment, Reaction, Category, PostReaction };

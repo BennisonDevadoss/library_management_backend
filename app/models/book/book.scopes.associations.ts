@@ -1,4 +1,4 @@
-import { Book, User, Category } from '../index';
+import { Book, User, Comment, Category } from '../index';
 
 function defineScopeAndAssociation() {
   Book.belongsTo(User, {
@@ -10,6 +10,11 @@ function defineScopeAndAssociation() {
     foreignKey: 'category_id',
     as: 'category'
   });
+
+  Book.hasMany(Comment, {
+    foreignKey: 'book_id',
+    as: 'comments'
+  })
 }
 
 export default defineScopeAndAssociation;

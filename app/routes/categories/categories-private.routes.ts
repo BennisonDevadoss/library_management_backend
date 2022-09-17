@@ -1,3 +1,5 @@
+import categoryListRouterOpts from './categories-list.router-options';
+
 import { listCategories } from '../../controllers/categories.controller';
 import { FastifyInstance } from 'fastify';
 
@@ -9,8 +11,9 @@ function categoriesPrivateRoutes(
   next: (err?: any) => void
 ) {
   fastify.route({
-    method: 'POST',
+    method: 'GET',
     url: '/v1/categories',
+    schema: categoryListRouterOpts,
     handler: listCategories
   });
   next();
