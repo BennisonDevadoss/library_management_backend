@@ -35,6 +35,10 @@ const tagOptions = [
   {
     name: 'comments',
     description: 'routes related to comments'
+  },
+  {
+    name: 'categories',
+    description: 'routes related to categories'
   }
 ];
 
