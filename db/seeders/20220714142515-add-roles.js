@@ -6,11 +6,11 @@ module.exports = {
       'roles',
       [
         {
-          role: 'Admin',
+          name: 'Admin',
           created_at: new Date()
         },
         {
-          role: 'Agent',
+          name: 'Agent',
           created_at: new Date()
         }
       ],
