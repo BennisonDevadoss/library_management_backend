@@ -21,7 +21,7 @@ const bookUpdateRouterOpts = {
     }
   },
   response: {
-    headers,
+    // headers,
     200: {
       description: 'newly updated book',
       type: 'object',

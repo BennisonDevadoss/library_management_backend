@@ -18,7 +18,7 @@ const bookListRouterOpts = {
     }
   },
   response: {
-    headers,
+    //   headers,
     200: {
       description: 'list of books',
       type: 'object',

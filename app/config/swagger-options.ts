@@ -1,5 +1,6 @@
 import { trimStart } from 'lodash';
-import { SwaggerOptions } from 'fastify-swagger';
+import { SwaggerOptions } from '@fastify/swagger';
+import { FastifySwaggerUiOptions } from '@fastify/swagger-ui';
 
 const baseUrl = trimStart(process.env.BASE_URL, 'https://');
 
@@ -43,8 +44,8 @@ const tagOptions = [
 ];
 
 const swaggerOptions: SwaggerOptions = {
-  routePrefix: '/doc',
-  exposeRoute: true,
+  /* routePrefix: '/doc',
+     exposeRoute: true, */
   swagger: {
     tags: tagOptions,
     host: baseUrl,
@@ -66,4 +67,23 @@ const swaggerOptions: SwaggerOptions = {
   }
 };
 
-export default swaggerOptions;
+const swaggerUiOptions: FastifySwaggerUiOptions = {
+  // baseDir: '/path/to/external/spec/files/location',
+  routePrefix: '/documentation',
+  initOAuth: {},
+  uiConfig: {
+    deepLinking: false
+  }
+  // uiHooks: {
+  //   onRequest: function (request, reply, next) {
+  //     next();
+  //   },
+  //   preHandler: function (request, reply, next) {
+  //     next();
+  //   }
+  // },
+  // staticCSP: true,
+  // transformStaticCSP: (header) => header
+};
+
+export { swaggerOptions, swaggerUiOptions };

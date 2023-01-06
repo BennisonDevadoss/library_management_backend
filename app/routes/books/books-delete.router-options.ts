@@ -11,7 +11,7 @@ const bookDeleteRouterOpts = {
     }
   },
   response: {
-    headers,
+    // headers,
     200: {
       description: 'book deleted',
       type: 'object',

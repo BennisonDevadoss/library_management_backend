@@ -12,7 +12,7 @@ export const bookDetailRouterOpts = {
     }
   },
   response: {
-    headers,
+    //   headers,
     200: {
       description: 'book detail',
       type: 'object',
