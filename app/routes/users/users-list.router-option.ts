@@ -17,7 +17,7 @@ const userListRouterOpts = {
     }
   },
   response: {
-    headers,
+    // headers,
     200: {
       description: 'list of users',
       type: 'object',

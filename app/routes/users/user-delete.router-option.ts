@@ -12,7 +12,7 @@ const userDeleteRouterOpts = {
     }
   },
   response: {
-    headers,
+    // headers,
     200: {
       description: 'user deleted',
       type: 'object',

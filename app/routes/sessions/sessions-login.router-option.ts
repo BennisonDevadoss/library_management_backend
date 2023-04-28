@@ -11,8 +11,8 @@ const loginRouterOpts = {
       password: { type: 'string' }
     }
   },
+  headers,
   response: {
-    headers,
     200: {
       description: 'successfully logged in',
       type: 'object',

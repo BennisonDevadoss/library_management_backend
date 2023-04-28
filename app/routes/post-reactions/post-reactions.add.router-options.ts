@@ -12,7 +12,7 @@ const postReactionCreateRouterOpts = {
   },
   body: {
     type: 'object',
-    requeired: ['reaction'],
+    required: ['reaction'],
     properties: {
       reaction: {
         type: 'string',
@@ -21,7 +21,7 @@ const postReactionCreateRouterOpts = {
     }
   },
   response: {
-    headers,
+    // headers,
     201: {
       description: 'newly added post reaction',
       type: 'object',

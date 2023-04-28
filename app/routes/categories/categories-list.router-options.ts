@@ -13,7 +13,7 @@ const categoryListRouterOpts = {
     }
   },
   response: {
-    headers,
+    //   headers,
     200: {
       description: 'list of categories',
       type: 'object',
